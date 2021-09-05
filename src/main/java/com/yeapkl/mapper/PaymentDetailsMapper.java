@@ -18,10 +18,10 @@ public class PaymentDetailsMapper implements FieldSetMapper<PaymentDetails> {
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
         return new PaymentDetails(
-                fieldSet.readString("accountNumber"),
+                fieldSet.readLong("accountNumber"),
                 fieldSet.readBigDecimal("trxAmount"),
                 fieldSet.readString("description"),
                 LocalDateTime.of(LocalDate.parse(fieldSet.readString("trxDate"),dateFormatter), LocalTime.parse(fieldSet.readString("trxTime"),timeFormatter)),
-                fieldSet.readInt("customerId"));
+                fieldSet.readLong("customerId"));
     }
 }
